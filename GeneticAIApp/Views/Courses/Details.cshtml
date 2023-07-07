@@ -1,0 +1,46 @@
+﻿@model GeneticAIApp.Models.CoursesViewModel
+
+@{
+    ViewData["Title"] = "Детайли";
+}
+
+<h1>Детайли</h1>
+
+<div>
+    <h4>CoursesViewModel</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-2">Клас
+            @*@Html.DisplayNameFor(model => model.Grade)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                var grade = Model.Grade.FullName();
+            }
+            @Html.DisplayFor(modelItem => grade)
+        </dd>
+        <dt class = "col-sm-2">Предмет
+            @*@Html.DisplayNameFor(model => model.Subject)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject.CourseName)
+        </dd>
+        <dt class = "col-sm-2">Учител
+            @*@Html.DisplayNameFor(model => model.Teacher)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Teacher.Name)
+        </dd>
+        <dt class="col-sm-2">Часове на седмица
+            @*@Html.DisplayNameFor(model => model.ForWeekId)*@
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ForWeekId)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Редактирай", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Обратно в списъка</a>
+</div>

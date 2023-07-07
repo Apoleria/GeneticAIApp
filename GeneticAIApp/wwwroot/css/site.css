@@ -1,0 +1,32 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+    background-color: #dacde6;
+}
+
+. {
+    height: 10px !important; /* overwrites any other rules */
+    background-color: #FFFFFF;
+}
+
+select {
+    width: 150px;
+}
+

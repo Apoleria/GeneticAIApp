@@ -1,0 +1,39 @@
+﻿@model GeneticAIApp.Models.GradeViewModel
+
+@{
+    ViewData["Title"] = "Детайли";
+    var gradeViewModel = ViewData["gradeViewModel"] as GradeViewModel;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @gradeViewModel.LableLatterBg()
+            @*@Html.DisplayNameFor(model => model.Number)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt class = "col-sm-2">
+            @gradeViewModel.LableNumberBg()
+            @*@Html.DisplayNameFor(model => model.Letter)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Letter)
+        </dd>
+        <dt class = "col-sm-2">
+            @gradeViewModel.LableGroupBg()
+            @*@Html.DisplayNameFor(model => model.Group)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Обратно в списъка</a>
+</div>

@@ -1,0 +1,25 @@
+﻿@model GeneticAIApp.Models.SubjectViewModel
+
+@{
+    ViewData["Title"] = "Изтриване";
+}
+
+<h1>Изтриване</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Предемет
+            @*@Html.DisplayNameFor(model => model.CourseName)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Изтрий" class="btn btn-danger" /> |
+        <a asp-action="Index">Обратно в списъка</a>
+    </form>
+</div>

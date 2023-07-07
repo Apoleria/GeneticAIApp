@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GeneticAIApp.Models.GradeViewModel>
+
+@{
+    ViewData["Title"] = "Списък класове";
+    var gradeViewModel = ViewData["gradeViewModel"] as GradeViewModel;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Създай нов</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @gradeViewModel.LableNumberBg()
+                @*@Html.DisplayNameFor(model => model.Number)*@
+            </th>
+            <th>
+                @gradeViewModel.LableLatterBg()
+                @*@Html.DisplayNameFor(model => model.Letter)*@
+            </th>
+            <th>
+                @gradeViewModel.LableGroupBg()
+                @*@Html.DisplayNameFor(model => model.Group)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Letter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Редактирай</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Виж детайли</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Изтрий</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

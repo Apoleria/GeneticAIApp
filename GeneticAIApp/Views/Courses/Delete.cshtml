@@ -1,0 +1,50 @@
+﻿@model GeneticAIApp.Models.CoursesViewModel
+
+@{
+    ViewData["Title"] = "Изтриване";
+}
+
+<h1>Изреиване</h1>
+
+<div>
+    <h4>CoursesViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Групи
+            @*@Html.DisplayNameFor(model => model.ForWeekId)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ForWeekId)
+        </dd>
+        <dt class = "col-sm-2">
+            Клас
+            @*@Html.DisplayNameFor(model => model.Grade)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grade.Letter)
+        </dd>
+        <dt class = "col-sm-2">
+            Буква
+            @*@Html.DisplayNameFor(model => model.Subject)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject.CourseName)
+        </dd>
+        <dt class = "col-sm-2">
+            Учител
+            @*@Html.DisplayNameFor(model => model.Teacher)*@
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Teacher.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GradeId" />
+        <input type="hidden" asp-for="SubjectId" />
+        <input type="hidden" asp-for="Teacherid" />
+        <input type="submit" value="Изтрий" class="btn btn-danger" /> |
+        <a asp-action="Index">Обратно в списъка</a>
+    </form>
+</div>

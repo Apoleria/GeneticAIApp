@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GeneticAIApp.Models.CoursesViewModel>
+
+@{
+    ViewData["Title"] = "Часове";
+}
+
+<h1>Часове</h1>
+@if (TempData["Message"] != null)
+{
+    <div class="alert"> @TempData["Message"] </div>
+}
+<p>
+    <a asp-action="Create">Създаване на нов</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                Клас
+                @*@Html.DisplayNameFor(model => model.Grade)*@
+            </th>
+            <th>
+                Предмет
+                @*@Html.DisplayNameFor(model => model.Subject)*@
+            </th>
+            <th>
+                Учител
+                @*@Html.DisplayNameFor(model => model.Teacher)*@
+            </th>
+            <th>
+                Брой часове
+                @*@Html.DisplayNameFor(model => model.ForWeekId)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+
+                <td>
+                    @{
+                        var grade = item.Grade.FullName();
+                    }
+                    @Html.DisplayFor(modelItem => grade)
+                    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForWeekId)
+            </td>
+            <td>
+                    @Html.ActionLink("Редактирай", "Edit", new { subjectId = item.SubjectId, gradeId = item.GradeId , teacherid = item.Teacherid /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Виж детайли", "Details", new { subjectId = item.SubjectId, gradeId = item.GradeId , teacherid = item.Teacherid /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Изтриване", "Delete", new { subjectId = item.SubjectId, gradeId = item.GradeId , teacherid = item.Teacherid /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

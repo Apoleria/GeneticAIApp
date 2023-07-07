@@ -1,0 +1,72 @@
+﻿@model List<GeneticAIApp.GenticAlgo.SingleGradeWeekProgram>
+
+@{
+    ViewData["Title"] = "Програма";
+    string[] hArr = new string[] {"", "Първи час", "Втори час", "Трети час", "Четвърти час", "Пети час", "Шести час", "Седми час" };
+    //var param = ViewContext.RouteData.Values["round"];
+}
+@if (Model is not null)
+{
+    <form action="/Home/Program" method="post">
+        <div class="form-group justify-content-between d-flex flex-row align-items-center">
+            <h1>Програма</h1>
+            <div class="align-items-center">
+                <span me-1>@Html.DropDownList("grade") </span>
+                <input type="submit" value="Зареди" class="btn btn-primary" />
+                <input type="submit" value="Експорт в PDF" class="btn btn-primary" />
+            </div>
+
+        </div>
+
+
+    </form>
+    <hr />
+    @for (int a = 0; a < Model.Count(); a++)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayFor(modelItem => modelItem[a].Grade.Number)
+                        @Html.DisplayFor(modelItem => modelItem[a].Grade.Letter)
+                    </th>
+                    <th scope="col">Понеделник</th>
+                    <th scope="col">Вторник</th>
+                    <th scope="col">Сряда</th>
+                    <th scope="col">Четвъртък</th>
+                    <th scope="col">Петък</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 1; i < 8; i++)
+                {
+                    <tr>
+                        <th scope="row">@hArr[i]</th>
+                        @for (int b = 1; b < 6; b++)
+                        {
+                            @if (Model[a].singleGradeWeekProgram.ContainsKey(b) && Model[a].singleGradeWeekProgram[b].dayliProgram.ContainsKey(i))
+                            {
+                                <td><div>@Html.DisplayFor(modelItem => modelItem[a].singleGradeWeekProgram[b].dayliProgram[i].Subject.CourseName)</div><div>@Html.DisplayFor(modelItem => modelItem[a].singleGradeWeekProgram[b].dayliProgram[i].Teacher.Name)</div></td>
+                            }
+                            else
+                            {
+                                <td><div> </div><div> </div></td>
+                            }
+                        }
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+        <div class="blank_row">&nbsp;</div>
+        <hr />
+    }
+} else
+{
+    <div class="alert alert-danger" role="alert">Няма генерирана програма</div>
+}
+
+
+    
+
